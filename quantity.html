@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Quantities</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional styles can be added here if needed */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .btn-primary {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #fff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .product-list {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .product-list:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        .bill {
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .bill table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .bill th, .bill td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .bill th {
+            background-color: #f2f2f2;
+        }
+        .confirmation-message {
+            margin-top: 20px;
+            background-color: #d4edda;
+            color: #155724;
+            border-color: #c3e6cb;
+            padding: 15px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Select Quantities for Products</h2>
+
+        <form id="quantityForm">
+            <div class="form-group">
+                <label for="customerName">Your Name:</label>
+                <input type="text" id="customerName" class="form-control" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="tel" id="phoneNumber" class="form-control" placeholder="Enter your phone number" pattern="[0-9]{10}" required>
+                <small>Format: 1234567890</small>
+            </div>
+
+            <div id="productContainer">
+                <div class="product-list">
+                    <div class="form-group">
+                        <label for="productName1">Product Name:</label>
+                        <select id="productName1" class="form-control">
+                            <option value="Khandvi">Khandvi</option>
+                            <option value="Jalebi">Jalebi</option>
+                            <option value="Dabeli">Dabeli</option>
+                            <option value="Basundi">Basundi</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity1">Quantity:</label>
+                        <input type="number" id="quantity1" class="form-control" placeholder="Enter quantity" min="1">
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" id="addProduct" class="btn btn-primary">Add Another Product</button>
+            <button type="submit" class="btn btn-primary">Proceed to Checkout</button>
+        </form>
+
+        <!-- Confirmation and Bill Display -->
+        <div id="confirmation" class="bill" style="display: none;">
+            <h3>Order Confirmation</h3>
+            <div id="billDetails"></div>
+            <div class="confirmation-message">Your order has been confirmed. Thank you!</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var productId = 1; // Initial product ID
+
+            // Function to add another product input section
+            document.getElementById('addProduct').addEventListener('click', function() {
+                productId++; // Increment product ID
+
+                var productHtml = `
+                    <div class="product-list">
+                        <div class="form-group">
+                            <label for="productName${productId}">Product Name:</label>
+                            <select id="productName${productId}" class="form-control">
+                                <option value="Khandvi">Khandvi</option>
+                                <option value="Jalebi">Jalebi</option>
+                                <option value="Dabeli">Dabeli</option>
+                                <option value="Basundi">Basundi</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="quantity${productId}">Quantity:</label>
+                            <input type="number" id="quantity${productId}" class="form-control" placeholder="Enter quantity" min="1">
+                        </div>
+                    </div>
+                `;
+
+                // Append new product input section to the form
+                document.getElementById('productContainer').insertAdjacentHTML('beforeend', productHtml);
+            });
+
+            // Handle form submission
+            document.getElementById('quantityForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent actual form submission (demo purpose)
+
+                var customerName = document.getElementById('customerName').value;
+                var phoneNumber = document.getElementById('phoneNumber').value;
+
+                // Validate customer name and phone number
+                if (!customerName.trim()) {
+                    alert('Please enter your name.');
+                    return;
+                }
+
+                if (!phoneNumber.match(/^\d{10}$/)) {
+                    alert('Please enter a valid 10-digit phone number.');
+                    return;
+                }
+
+                var products = []; // Array to store selected products and quantities
+
+                // Loop through each product input section
+                for (var i = 1; i <= productId; i++) {
+                    var productName = document.getElementById(`productName${i}`).value;
+                    var quantity = parseInt(document.getElementById(`quantity${i}`).value);
+
+                    // Validate quantity (you can add more validation as per your requirements)
+                    if (isNaN(quantity) || quantity <= 0) {
+                        alert(`Please enter a valid quantity for Product ${i}.`);
+                        return;
+                    }
+
+                    // Add product and quantity to the array
+                    products.push({
+                        productName: productName,
+                        quantity: quantity
+                    });
+                }
+
+                // Display selected products and quantities (for demonstration)
+                console.log('Selected Products and Quantities:', products);
+                console.log('Customer Name:', customerName);
+                console.log('Phone Number:', phoneNumber);
+
+                // Show confirmation and bill details
+                showConfirmation(products);
+
+                // Redirect to index.html after confirmation
+                setTimeout(function() {
+                    window.location.href = 'index.html';
+                }, 3000); // Redirect after 3 seconds (adjust as needed)
+            });
+
+            // Function to display confirmation message and bill
+            function showConfirmation(products) {
+                var billHtml = `
+                    <table>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                        </tr>
+                `;
+
+                products.forEach(function(product) {
+                    billHtml += `
+                        <tr>
+                            <td>${product.productName}</td>
+                            <td>${product.quantity}</td>
+                        </tr>
+                    `;
+                });
+
+                billHtml += `</table>`;
+
+                document.getElementById('billDetails').innerHTML = billHtml;
+                document.getElementById('confirmation').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+               
+
+
+
+
+
+
+
+
+
+

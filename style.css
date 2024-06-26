@@ -1,0 +1,546 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Uchen", serif;
+}
+
+.all-content {
+    background: #2e1700;
+}
+
+/* Navbar */
+#navbar {
+    background-color: #573818;
+    padding-left: 60px;
+    font-weight: bold;
+}
+
+#logo {
+    font-size: 23px;
+    color: white;
+}
+
+#logo img {
+    margin-bottom: 15px;
+}
+
+.navbar-nav {
+    margin-left: 10px;
+}
+
+.nav-link {
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black;
+    margin-left: 15px;
+    transition: 0.5s ease;
+}
+
+.nav-link:hover {
+    background-color: rgba(161, 109, 14, 1);
+    color: white;
+    border-radius: 5px;
+}
+
+.icons {
+    margin-left: 30px;
+}
+
+.icons img {
+    margin-left: 10px;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+.icons img:hover {
+    transform: translateY(-5px);
+}
+
+@media screen and (max-width: 330px) {
+    #logo {
+        font-size: 15px;
+    }
+}
+
+/* Home Section */
+.home {
+    width: 100%;
+    height: 88.5vh;
+    display: flex;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('1.JPG');
+    background-size: cover;
+    background-position: center;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 0;
+    box-sizing: border-box;
+}
+
+.home .img {
+    flex: 1 1 400px;
+    box-sizing: border-box;
+}
+
+.home .img img {
+    width: 735px;
+    height: 735px;
+    box-sizing: border-box;
+}
+
+.home .content {
+    flex: 1 1 400px;
+    margin-left: 60px;
+    box-sizing: border-box;
+    color: white;
+}
+
+.content h3 {
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black;
+}
+
+.content h2 {
+    color: white;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.changecontent::after {
+    content: '';
+    color: rgba(161, 109, 14, 1);
+    animation: changetext 10s infinite linear;
+    font-weight: bold;
+}
+
+@keyframes changetext {
+    0% { content: "North Indian"; }
+    50% { content: "South Indian"; }
+    100% { content: "Sweets"; }
+}
+
+.content p {
+    color: white;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black;
+}
+
+.content .btn {
+    width: 110px;
+    height: 38px;
+    background-color: #573818;
+    color: white;
+}
+
+@media screen and (max-width: 800px) {
+    .content h3 {
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width: 860px) {
+    .home {
+        height: 120vh;
+    }
+}
+
+@media screen and (max-width: 560px) {
+    .home {
+        height: 100vh;
+    }
+}
+
+@media screen and (max-width: 330px) {
+    .content h2 {
+        font-size: 30px;
+    }
+    .content h3 {
+        font-size: 30px;
+    }
+}
+
+/* Cards */
+.cards {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.cards img {
+    width: 100%;
+    height: auto;
+    align-self: flex-end;
+}
+
+.col-md-4 {
+    padding-bottom: 15px;
+}
+
+/* Top Cards */
+#box {
+    margin-top: 50px;
+}
+
+#box.cards {
+    box-shadow: 0px 0px 5px black;
+    margin-top: 10px;
+    transition: 0.5s ease;
+    cursor: pointer;
+}
+
+#box .cards:hover {
+    transform: translateY(-10px);
+}
+
+/* Banner */
+.banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 60vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('8.png');
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0px 0px 10px black;
+    padding: 0 20px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.banner .img {
+    flex: 1 1 400px;
+}
+
+.banner .img img {
+    width: 755px;
+    height: 495px;
+}
+
+.banner .content {
+    flex: 1 1 400px;
+    margin-left: 60px;
+    margin-top: 60px;
+}
+
+.banner .content h3 {
+    font-family: "Playwrite ZA", cursive;
+    color: rgba(161, 109, 14, 1);
+    font-weight: bold;
+}
+
+.banner .content h2 {
+    font-size: 50px;
+    color: rgba(161, 109, 14, 1);
+    text-shadow: 1px 1px 1px black;
+    font-family: "Rajdhani", sans-serif;
+    font-weight: 700;
+}
+
+.banner .content p {
+    color: rgba(161, 109, 14, 1);
+    font-family: "Playwrite ZA", cursive;
+}
+
+#btnorder button {
+    width: 150px;
+    height: 32px;
+    letter-spacing: 5px;
+    background-color: rosybrown;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+    .banner .content h3 {
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width: 855px) {
+    .banner {
+        height: 100vh;
+    }
+}
+
+/* Product Card */
+.card {
+    border: none;
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.overlay {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover .overlay {
+    opacity: 1;
+}
+
+.star {
+    color: #ffd700;
+}
+
+.checked {
+    color: #ffd700;
+}
+
+#product-cards h1 {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 50px;
+    color: rgba(161, 109, 14, 1);
+    text-shadow: 1px 1px 1px black;
+    border-bottom: 2px solid rgba(161, 109, 14, 1);
+    padding-bottom: 10px;
+}
+
+#producr-cards .card {
+    background-color: rgba(161, 109, 14, 1);
+    box-shadow: 0 0 3px black;
+    border-radius: 5px;
+}
+
+/* About Us Section Styles */
+#about-us {
+    background-color: #f8f9fa;
+    padding: 50px;
+    margin-top: 50px;
+}
+
+#about-us h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#about-us p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+#about-us a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#about-us a:hover {
+    text-decoration: underline;
+}
+
+/* Reviews Section Styles */
+#reviews {
+    padding: 50px;
+    background-color: #f8f9fa;
+}
+
+#reviews h2 {
+    margin-bottom: 30px;
+}
+
+.card {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Review Form Styles */
+#reviewForm {
+    margin-top: 30px;
+}
+
+#reviewForm .form-group {
+    margin-bottom: 20px;
+}
+
+.review-card {
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.review-form {
+    background-color: #e9ecef;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+
+.reply {
+    margin-top:
+    10px;
+    padding-left: 15px;
+    border-left: 2px solid #007bff;
+}
+
+/* Footer Section Styles */
+footer {
+    background-color: #573818;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .navbar-nav {
+        margin-left: 0;
+    }
+    
+    .nav-link {
+        margin-left: 10px;
+    }
+
+    .icons {
+        margin-left: 15px;
+    }
+
+    .home .img img {
+        width: 100%;
+        height: auto;
+    }
+
+    .content {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .banner {
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        justify-content: center;
+    }
+
+    .banner .img img {
+        width: 100%;
+        height: auto;
+    }
+
+    .banner .content {
+        margin-left: 0;
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    .banner .content h2 {
+        font-size: 40px;
+    }
+
+    .banner .content p {
+        font-size: 1rem;
+    }
+
+    .card {
+        margin-bottom: 30px;
+    }
+
+    .review-card {
+        padding: 10px;
+    }
+
+    .review-form {
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .navbar-nav {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 70px;
+        background-color: #573818;
+        width: 50%;
+        text-align: center;
+    }
+
+    .navbar-nav.active {
+        display: block;
+    }
+
+    .nav-link {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .icons {
+        display: block;
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .icons img {
+        margin-left: 0;
+        margin-right: 15px;
+    }
+
+    .home {
+        height: 100vh;
+    }
+
+    .home .content {
+        margin-left: 0;
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    .home .content h2,
+    .home .content h3 {
+        font-size: 30px;
+    }
+
+    .cards {
+        padding: 10px;
+    }
+
+    .banner {
+        height: 100vh;
+    }
+
+    .banner .content {
+        margin-left: 0;
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    .banner .content h2 {
+        font-size: 30px;
+    }
+
+    .banner .content p {
+        font-size: 0.9rem;
+    }
+
+    .review-card,
+    .review-form {
+        padding: 10px;
+    }
+}
